@@ -25,6 +25,7 @@ namespace BallShooter
         public void Fixed(float deltaTime)
         {
             _modifier = _timer.LocalTime / 1000;
+            //Это надо было сделать через событие, но я не успел разобраться как.
             for (int i = 0; i < _data.ActiveBalls; i++)
             {
                 _speed = _balls[i].Speed + _modifier;
@@ -33,9 +34,16 @@ namespace BallShooter
                 if (_ballObjects[i].transform.position.y <= -5)
                 {
                     _data.Health--;
-                    GameEventSystem.current.GUIUpdate();
-                    _ballObjects[i].transform.position = new Vector2(0,0);
-                    _checker.BallDestroy(_ballObjects[i]);
+                    if (_data.Health < 0)
+                    {
+                        GameEventSystem.current.Loose();
+                    }
+                    else
+                    {
+                        GameEventSystem.current.GUIUpdate();
+                        _ballObjects[i].transform.position = new Vector2(0, 0);
+                        _checker.BallDestroy(_ballObjects[i]);
+                    }
                 }
             }
 

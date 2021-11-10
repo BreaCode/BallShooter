@@ -20,5 +20,14 @@ namespace BallShooter
                 onGUIUpdate();
             }
         }
+
+        public event Action onLoose;
+        public void Loose()
+        {
+            if (onLoose != null)
+            {
+                onLoose();
+            }
+        }
     }
 }

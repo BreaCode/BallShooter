@@ -16,7 +16,6 @@ namespace BallShooter
             controllers.Add(spawner);
             controllers.Add(timer);
             controllers.Add(ballsController);
-            GameEventSystem.current.GUIUpdate();
         }
     }
 }

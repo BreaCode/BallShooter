@@ -8,16 +8,16 @@ namespace BallShooter
 {
     public sealed class MenuTmp : MonoBehaviour
     {
-        //Здесь пока колхоз
-        //Я знаю что так нельзя, но сделал просто чтоб работало
         private GameObject _menu;
-        private GameObject _settings;
         private GameObject _gui;
+        private GameObject _looseScreen;
         [SerializeField] private Button _continueButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _quitButton;
-        [SerializeField] private TMP_Text _HP;
-        [SerializeField] private TMP_Text _Score;
+        [SerializeField] private Button _retryButton;
+        [SerializeField] private TMP_Text _hp;
+        [SerializeField] private TMP_Text _score;
+        [SerializeField] private TMP_Text _looseScore;
         [SerializeField] private GameData _data;
 
 
@@ -25,11 +25,15 @@ namespace BallShooter
         {
             _menu = GameObject.Find("PauseMenu");
             _gui = GameObject.Find("GUI");
+            _looseScreen = GameObject.Find("Loose");
             _continueButton.onClick.AddListener(Continue);
             _restartButton.onClick.AddListener(Restart);
+            _retryButton.onClick.AddListener(Restart);
             _quitButton.onClick.AddListener(Close);
             _menu.SetActive(false);
+            _looseScreen.SetActive(false);
             GameEventSystem.current.onGUIUpdate += GUIUpdate;
+            GameEventSystem.current.onLoose += Loose;
         }
 
         void Update()
@@ -43,14 +47,23 @@ namespace BallShooter
             }
         }
 
+        private void Loose()
+        {
+            _gui.SetActive(false);
+            _looseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
         private void GUIUpdate()
         {
-            _HP.text = $"HP : {_data.Health}";
-            _Score.text = $"Score : {_data.Score}";
+            _hp.text = $"HP : {_data.Health}";
+            _score.text = $"Score : {_data.Score}";
+            _looseScore.text = _score.text;
         }
 
         private void Restart()
         {
+            DataInitialization.Initialization(_data);
             SceneManager.LoadScene(0);
         }
         private void Continue()
@@ -67,6 +80,7 @@ namespace BallShooter
         private void OnDisable()
         {
             GameEventSystem.current.onGUIUpdate -= GUIUpdate;
+            GameEventSystem.current.onLoose -= Loose;
         }
     }
 }

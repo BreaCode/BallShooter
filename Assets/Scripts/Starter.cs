@@ -11,6 +11,10 @@ namespace BallShooter
             new GameInitialization(_controllers, _gameData);
             _controllers.Initialization();
         }
+        private void Start()
+        {
+            GameEventSystem.current.GUIUpdate();
+        }
 
         private void Update()
         {
