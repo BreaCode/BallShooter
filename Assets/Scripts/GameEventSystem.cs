@@ -12,6 +12,15 @@ namespace BallShooter
             current = this;
         }
 
+        public event Action<int> onBallCreate;
+        public void BallCreate(int index)
+        {
+            if (onBallCreate != null)
+            {
+                onBallCreate(index);
+            }
+        }
+
         public event Action onGUIUpdate;
         public void GUIUpdate()
         {

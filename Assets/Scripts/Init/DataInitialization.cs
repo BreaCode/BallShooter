@@ -11,6 +11,7 @@ namespace BallShooter
             data.MaxBalls = 30;
             data.Score = 0;
             data.Health = 20;
+            data.ActiveBalls = 0;
             data.Pool = new ObjectPool(data.Prefab, data.OriginTransform);
             data.Colliders = new Collider2D[data.MaxBalls];
             data.Balls = new Ball[data.MaxBalls];

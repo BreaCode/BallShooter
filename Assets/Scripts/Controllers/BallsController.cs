@@ -42,7 +42,7 @@ namespace BallShooter
                     {
                         GameEventSystem.current.GUIUpdate();
                         _ballObjects[i].transform.position = new Vector2(0, 0);
-                        _checker.BallDestroy(_ballObjects[i]);
+                        _checker.BallDestroy(_ballObjects[i], i);
                     }
                 }
             }

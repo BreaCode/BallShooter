@@ -21,17 +21,16 @@ namespace BallShooter
                     //Debug.Log("Boom");
                     _data.Score++;
                     GameEventSystem.current.GUIUpdate();
-                    BallDestroy(_colliders[i].gameObject);
+                    BallDestroy(_colliders[i].gameObject, i);
                 }
             }
         }
 
-        public void BallDestroy(GameObject ball)
+        public void BallDestroy(GameObject ball, int index)
         {
             _pool.Push(ball);
             _data.ActiveBalls--;
-            //Ќе понимаю почему их становитс€ меньше
-            Debug.Log(_data.ActiveBalls);
+            GameEventSystem.current.BallCreate(index);
         }
     }
 }
