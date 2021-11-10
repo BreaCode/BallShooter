@@ -11,10 +11,12 @@ namespace BallShooter
         private Ball[] _balls;
         private GameObject[] _ballObjects;
         private Collider2D[] _colliders;
+        private System.Random _rand;
 
         public SpawnerController(GameData data)
         {
             GameEventSystem.current.onBallCreate += CreateBall;
+            _rand = new System.Random();
             _data = data;
             _poolSize = data.MaxBalls;
             _balls = data.Balls;
@@ -24,17 +26,21 @@ namespace BallShooter
 
             for (int i = 0; i < _poolSize; i++)
             {
-                _balls[i] = new Ball();
+                //_balls[i] = new Ball();
                 data.BallObjects[i] = _pool.Pop();
                 data.Colliders[i] = data.BallObjects[i].GetComponent<Collider2D>();
                 _pool.Push(data.BallObjects[i]);
+            }
+            while (_data.ActiveBalls < _data.MaxBalls)
+            {
+                CreateBall(_data.ActiveBalls);
             }
         }
 
 
         private void CreateBall(int i)
         {
-                _balls[i] = new Ball();
+                _balls[i] = new Ball(_rand);
                 _ballObjects[i] = _pool.Pop();
                 _colliders[i] = _ballObjects[i].GetComponent<Collider2D>();
                 _ballObjects[i].transform.position = _balls[i].StartPos;

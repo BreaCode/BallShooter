@@ -35,9 +35,8 @@ internal sealed class Ball
         _speed = speed;
         _scale = scale;
     }
-    public Ball()
+    public Ball(System.Random rand)
     {
-        System.Random rand = new System.Random();
         byte negative = (byte)rand.Next(0, 2);
         if (negative != 0)
         {
