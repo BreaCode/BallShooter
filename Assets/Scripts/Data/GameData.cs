@@ -14,6 +14,8 @@ namespace BallShooter
         public Ball[] Balls;
         public int ActiveBalls;
         public int MaxBalls;
+        public int Score;
+        public int Health;
     }
 }
 

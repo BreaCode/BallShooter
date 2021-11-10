@@ -8,10 +8,12 @@ namespace BallShooter
     {
         private readonly Stack<GameObject> _stack = new Stack<GameObject>();
         private readonly GameObject _prefab;
+        private readonly Transform _parent;
 
-        public ObjectPool(GameObject prefab)
+        public ObjectPool(GameObject prefab, Transform parent)
         {
             _prefab = prefab;
+            _parent = parent;
         }
 
         public void Push(GameObject go)
@@ -25,7 +27,7 @@ namespace BallShooter
             GameObject go;
             if (_stack.Count == 0)
             {
-                go = GameObject.Instantiate(_prefab);
+                go = GameObject.Instantiate(_prefab, _parent);
             }
             else
             {

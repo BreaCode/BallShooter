@@ -18,7 +18,7 @@ namespace BallShooter
             {
                 if (_colliders[i].bounds.Contains(mousePos))
                 {
-                    Debug.Log("Boom");
+                    //Debug.Log("Boom");
                     BallDestroy(_colliders[i].gameObject);
                 }
             }
@@ -28,6 +28,7 @@ namespace BallShooter
         {
             _pool.Push(ball);
             _data.ActiveBalls--;
+            //Ќе понимаю почему их становитс€ меньше
             Debug.Log(_data.ActiveBalls);
         }
     }

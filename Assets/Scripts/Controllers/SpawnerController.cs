@@ -8,7 +8,6 @@ namespace BallShooter
         private GameData _data;
         private ObjectPool _pool;
         private int _poolSize;
-        private GameObject _prefab;
         private Ball[] _balls;
         private GameObject[] _ballObjects;
         private Collider2D[] _colliders;
@@ -18,7 +17,6 @@ namespace BallShooter
             _data = data;
             _poolSize = data.MaxBalls;
             _balls = data.Balls;
-            _prefab = data.Prefab;
             _ballObjects = data.BallObjects;
             _colliders = data.Colliders;
             _pool = data.Pool;
@@ -48,6 +46,7 @@ namespace BallShooter
             int i = _data.ActiveBalls;
             _balls[i] = new Ball();
             _ballObjects[i] = _pool.Pop();
+            _colliders[i] = _ballObjects[i].GetComponent<Collider2D>();
             _ballObjects[i].transform.position = _balls[i].StartPos;
             _ballObjects[i].GetComponent<SpriteRenderer>().color = _balls[i].Color;
             _ballObjects[i].transform.localScale = new Vector3(_balls[i].Scale, _balls[i].Scale, 0);
