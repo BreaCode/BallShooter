@@ -5,7 +5,7 @@ namespace BallShooter
     {
         [SerializeField] private GameData _gameData;
         private Controllers _controllers;
-        void Start()
+        void Awake()
         {
             _controllers = new Controllers();
             new GameInitialization(_controllers, _gameData);

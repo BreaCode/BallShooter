@@ -5,10 +5,12 @@ namespace BallShooter
     {
         private GameData _data;
         private Collider2D[] _colliders;
+        private ObjectPool _pool;
         internal Checker(GameData data)
         {
             _data = data;
             _colliders = data.Colliders;
+            _pool = data.Pool;
         }
         public void Check(Vector3 mousePos)
         {
@@ -16,18 +18,15 @@ namespace BallShooter
             {
                 if (_colliders[i].bounds.Contains(mousePos))
                 {
-                    //Debug.Log("Boom");
-                    BallDestroy(_colliders[i].gameObject, i);
+                    Debug.Log("Boom");
+                    BallDestroy(_colliders[i].gameObject);
                 }
             }
         }
 
-        public void BallDestroy(GameObject ball, int index)
+        public void BallDestroy(GameObject ball)
         {
-            GameObject tmp = _data.BallObjects[_data.ActiveBalls];
-            _data.BallObjects[_data.ActiveBalls] = ball;
-            _data.BallObjects[index] = tmp;
-            _data.BallObjects[_data.ActiveBalls].SetActive(false);
+            _pool.Push(ball);
             _data.ActiveBalls--;
             Debug.Log(_data.ActiveBalls);
         }

@@ -25,7 +25,7 @@ namespace BallShooter
         public void Fixed(float deltaTime)
         {
             _modifier = _timer.LocalTime / 1000;
-            for (int i = 0; i <= _data.ActiveBalls; i++)
+            for (int i = 0; i < _data.ActiveBalls; i++)
             {
                 _speed = _balls[i].Speed + _modifier;
                 Vector3 delta = new Vector3(0, -_speed);
@@ -33,7 +33,7 @@ namespace BallShooter
                 if (_ballObjects[i].transform.position.y <= -5)
                 {
                     _ballObjects[i].transform.position = new Vector2(0,0);
-                    _checker.BallDestroy(_ballObjects[i], i);
+                    _checker.BallDestroy(_ballObjects[i]);
                 }
             }
 

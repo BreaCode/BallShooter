@@ -13,7 +13,6 @@ namespace BallShooter
 
         public void Execute(float deltaTime)
         {
-            //Debug.Log(_mousepos);
             if (Input.GetMouseButtonDown(0))
             {
                 _mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

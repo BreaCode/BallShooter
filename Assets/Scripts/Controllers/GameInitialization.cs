@@ -6,9 +6,11 @@ namespace BallShooter
     {
         public GameInitialization(Controllers controllers, GameData data)
         {
-            data.Colliders = new Collider2D[100];
-            data.Balls = new Ball[100];
-            data.BallObjects = new GameObject[100];
+            data.MaxBalls = 30;
+            data.Pool = new ObjectPool(data.Prefab);
+            data.Colliders = new Collider2D[data.MaxBalls];
+            data.Balls = new Ball[data.MaxBalls];
+            data.BallObjects = new GameObject[data.MaxBalls];
             data.OriginTransform = GameObject.Find("SpawnPoint").transform;
             Checker checker = new Checker(data);
             Timer timer = new Timer();
