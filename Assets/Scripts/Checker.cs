@@ -19,6 +19,8 @@ namespace BallShooter
                 if (_colliders[i].bounds.Contains(mousePos))
                 {
                     //Debug.Log("Boom");
+                    _data.Score++;
+                    GameEventSystem.current.GUIUpdate();
                     BallDestroy(_colliders[i].gameObject);
                 }
             }

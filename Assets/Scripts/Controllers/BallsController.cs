@@ -32,6 +32,8 @@ namespace BallShooter
                 _ballObjects[i].transform.position = _ballObjects[i].transform.position + delta;
                 if (_ballObjects[i].transform.position.y <= -5)
                 {
+                    _data.Health--;
+                    GameEventSystem.current.GUIUpdate();
                     _ballObjects[i].transform.position = new Vector2(0,0);
                     _checker.BallDestroy(_ballObjects[i]);
                 }

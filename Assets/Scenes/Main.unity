@@ -269,12 +269,12 @@ GameObject:
   - component: {fileID: 229061717}
   - component: {fileID: 229061716}
   m_Layer: 5
-  m_Name: MenuPanel
+  m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &229061715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 1268005124}
   - component: {fileID: 1268005123}
   - component: {fileID: 1268005122}
+  - component: {fileID: 1268005125}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -969,6 +970,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1268005125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268005120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8f02b58d49d0545a15f143d10bf9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _continueButton: {fileID: 535191298}
+  _restartButton: {fileID: 1355983195}
+  _quitButton: {fileID: 1893053774}
+  _HP: {fileID: 1973970495}
+  _Score: {fileID: 1033608998}
+  _data: {fileID: 11400000, guid: e5270d518df0f6f41924d972862aa0b0, type: 2}
 --- !u!1 &1355983193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1120,7 @@ GameObject:
   - component: {fileID: 1417113337}
   - component: {fileID: 1417113339}
   - component: {fileID: 1417113338}
+  - component: {fileID: 1417113340}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1156,6 +1176,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &1417113340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417113336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a44b88decf3e5044a8bf7c06eae3230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1468849121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,12 +1666,12 @@ GameObject:
   - component: {fileID: 2048863591}
   - component: {fileID: 2048863590}
   m_Layer: 5
-  m_Name: GuiPanel
+  m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2048863589
 RectTransform:
   m_ObjectHideFlags: 0
