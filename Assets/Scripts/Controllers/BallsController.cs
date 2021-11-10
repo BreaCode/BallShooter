@@ -24,7 +24,7 @@ namespace BallShooter
         }
         public void Fixed(float deltaTime)
         {
-            _modifier = _timer.LocalTime / 1000;
+            _modifier = _timer.LocalTime / 10000;
             //Это надо было сделать через событие, но я не успел разобраться как.
             for (int i = 0; i < _data.ActiveBalls; i++)
             {
